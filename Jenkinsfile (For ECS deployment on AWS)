@@ -144,10 +144,6 @@ pipeline {
           steps {
         withAWS(credentials: '<aws credentials in jenkins server>', region: 'us-east-2') {
           sh 'aws ecs update-service --cluster ${cluster} --service ${serviceapp} --force-new-deployment'
-          sh 'aws ecs update-service --cluster ${cluster} --service ${servicedb} --force-new-deployment'
-          sh 'aws ecs update-service --cluster ${cluster} --service ${memcachedsvc} --force-new-deployment'
-          sh 'aws ecs update-service --cluster ${cluster} --service ${rabbitmqsvc} --force-new-deployment'
-
 
         }
       }
