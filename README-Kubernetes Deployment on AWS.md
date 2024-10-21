@@ -23,6 +23,9 @@
 # Create the cluster using Kops
 # in a directory, using "helm create <chartname>", and go into the template and replace its content with the kubernetes definition files
 # add the namespace "prod" in order to isolate the resources
+# For DB I've created EBS mapped to the container configurations file /var/lib/mysql
+# An EBS must be created in the same region as the MySQL Pods & tagged with Key=KubernetesCluster, Value=""the name of the k8s cluster we chosen""
+# so label the node thats in the same region as the EBS and matchLabel all the MySQL Pods to that node through Deployment
 
 
 # The Pipeline contains the following by Jenkins server:- 1) building the artifact [maven], 2) testing it using unit test
@@ -34,6 +37,7 @@
 
 # the application stack on Kubernetes is typically the following objects (Secret file for sensitive data, 3 ClusterIP Services for backend services)
 # (1 LoadBalancer Service for the frontend service, 4 Deployments for all of the services of the app stack)  [FE: Tomcat, BE: MySQL, Memcache, RabbitMQ]
+
 
 
 
